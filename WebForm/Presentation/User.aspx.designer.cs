@@ -132,13 +132,13 @@ namespace WebForm.Presentation
 		protected global::System.Web.UI.WebControls.TextBox PAS_USE;
 
 		/// <summary>
-		/// btnGuardar control.
+		/// btnBuscar control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnGuardar;
+		protected global::System.Web.UI.WebControls.Button btnBuscar;
 
 		/// <summary>
 		/// btnLogout control.
@@ -157,6 +157,15 @@ namespace WebForm.Presentation
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Button btnUpdate;
+
+		/// <summary>
+		/// txtBuscarCedula control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtBuscarCedula;
 
 		/// <summary>
 		/// gvUser control.

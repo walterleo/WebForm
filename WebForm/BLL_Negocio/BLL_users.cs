@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using WebForm.Objects;
 using WebForm.DAL_Datos;
+using WebForm.Presentation;
 
 
 
@@ -11,6 +12,19 @@ namespace WebForm.BLL_Negocio
 {
 	public class BLL_users
 	{
+
+		private readonly DAL_users _dal = new DAL_users();
+
+		public List<users> GetAll()
+						=> _dal.GetListUserData();
+
+		public List<users> SearchByCedula(string prefix)
+				=> _dal
+						.GetListUserData()
+						.Where(u => u.IDC_USE.StartsWith(prefix))
+						.ToList();
+
+
 		public users SaveNewUSers(users us)
 		{
 			BLL_Negocio.BLL_General blg = new BLL_General();
@@ -43,6 +57,10 @@ namespace WebForm.BLL_Negocio
 			DAL_users dlu = new DAL_users();
 			return dlu.DeleteUserData(us);
 		}
+
+		
+
+
 
 	}
 }

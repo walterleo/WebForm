@@ -12,14 +12,41 @@ namespace WebForm.Presentation
 {
 	public partial class User : System.Web.UI.Page
 	{
+
+		private List<users> AllUsers
+		{
+			get => Session["AllUsers"] as List<users>;
+			set => Session["AllUsers"] = value;
+		}
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!IsPostBack) {
+				var bl = new BLL_Negocio.BLL_users();
+				var list = bl.GetListUsers();
+				AllUsers = list;                  // la guardo en Session
+				gvUser.DataSource = list;         // relleno la grilla
+				gvUser.DataBind();
+
 				UpdateDataGrid();
 				//VerificationCookie();
 				//VerificationSession();
 			}
 
+		}
+
+		protected void btnBuscar_Click(object sender, EventArgs e)
+		{
+			// 1) obtengo texto del TextBox (tienes que crear txtBuscarCedula en el .aspx)
+			string filtro = txtBuscarCedula.Text.Trim();
+
+			// 2) filtro la lista en memoria
+			var filtrados = (AllUsers ?? new List<users>())
+					.Where(u => u.IDC_USE.StartsWith(filtro))
+					.ToList();
+
+			// 3) rebindeo la grilla
+			gvUser.DataSource = filtrados;
+			gvUser.DataBind();
 		}
 
 		private void UpdateDataGrid()
