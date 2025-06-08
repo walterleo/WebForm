@@ -15,6 +15,8 @@ namespace WebForm.BLL_Negocio
 
 		private readonly DAL_users _dal = new DAL_users();
 
+		DALUsersMysql dalMysql = new DALUsersMysql();
+
 		public List<users> GetAll()
 						=> _dal.GetListUserData();
 
@@ -29,18 +31,21 @@ namespace WebForm.BLL_Negocio
 		{
 			BLL_Negocio.BLL_General blg = new BLL_General();
 			us.PAS_USE = blg.GetHashSHA256(us.PAS_USE);
-			DAL_Datos.DAL_users dlu = new DAL_Datos.DAL_users();
-			us = dlu.SaveUserDataBase(us);
+			//DAL_Datos.DAL_users dlu = new DAL_Datos.DAL_users();
+			////us = dlu.SaveUserDataBase(us);
 
-			return us;
+			return dalMysql.SaveUserDataMysql(us);
 
 		}
 
 		public List<users> GetListUsers()
 		{
-			DAL_Datos.DAL_users dlu = new DAL_Datos.DAL_users();
+			//DAL_Datos.DAL_users dlu = new DAL_Datos.DAL_users();
 
-			return dlu.GetListUserData();
+			//return dlu.GetListUserData();
+			DALUsersMysql dMylus = new DALUsersMysql();
+			return dMylus.GetUsersDataMysql();
+
 		}
 
 		public users UpdateUser(users us)
@@ -48,19 +53,17 @@ namespace WebForm.BLL_Negocio
 			us.NAM_USE = us.NAM_USE.ToUpper();
 			us.LAS_USE = us.LAS_USE.ToUpper();
 
-			DAL_Datos.DAL_users dlu = new DAL_users();
-			return dlu.UpdateUserData(us);
+			//DAL_Datos.DAL_users dlu = new DAL_users();
+			//return dlu.UpdateUserData(us);
+			return dalMysql.UpdateUserDataMysql(us);
 		}
 
 		public users DeleteUser(users us)
 		{
-			DAL_users dlu = new DAL_users();
-			return dlu.DeleteUserData(us);
+			//DAL_users dlu = new DAL_users();
+			//return dlu.DeleteUserData(us);
+			return dalMysql.DeleteUserDataMysql(us);
 		}
-
-		
-
-
 
 	}
 }
