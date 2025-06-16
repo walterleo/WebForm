@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using WebForm.Objects;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace WebForm.DAL_Datos
 {
@@ -181,21 +183,22 @@ namespace WebForm.DAL_Datos
 
 			return us;
 		}
-                public System.Data.DataTable GetCustomersByUser(int userId)
-                {
-                        System.Data.DataTable dt = new System.Data.DataTable();
+		public DataSet GetCustomersByUser(int userId)
+		{
+			DataSet dt = new DataSet();
+			string cadenaConexion = "Server=127.0.0.1;Port=3306;Database=market1234;Uid=root;password=;";
 			string query = "SELECT NAM_CUS, LAS_CUS, IDC_CUS FROM CUSTOMERS WHERE ID_USE_CUS = @UserId";
 
-			using (SqlConnection connection = new SqlConnection(connectionQuery))
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                        {
-                                command.Parameters.AddWithValue("@UserId", userId);
-                                adapter.Fill(dt);
-                        }
+			using (MySqlConnection connection = new MySqlConnection(cadenaConexion))
+			using (MySqlCommand command = new MySqlCommand(query, connection))
+			using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+			{
+				command.Parameters.AddWithValue("@UserId", userId);
+				adapter.Fill(dt, "DataSet5");
+			}
 
-                        return dt;
-                }
+			return dt;
+		}
 
 
 

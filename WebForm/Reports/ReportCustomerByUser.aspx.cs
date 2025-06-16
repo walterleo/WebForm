@@ -19,14 +19,25 @@ namespace WebForm.Reports
             }
         }
 
-        private void RunReport(int userId)
-        {
-            BLL_customers bll = new BLL_customers();
-            DataTable table = bll.GetCustomersByUser(userId);
+		private void RunReport(int userId)
+		{
+			BLL_customers bll = new BLL_customers();
+			DataSet table = bll.GetCustomersByUser(userId);
 
-            ReportViewer1.LocalReport.DataSources.Clear();
-            ReportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", table));
-            ReportViewer1.LocalReport.Refresh();
-        }
-    }
+			ReportViewer1.ProcessingMode = ProcessingMode.Local;
+			ReportViewer1.Reset();
+
+			// Ruta del reporte RDLC
+			ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Reports/ReportCustomerByUser.rdlc");
+
+			ReportViewer1.LocalReport.DataSources.Clear();
+
+			ReportViewer1.LocalReport.DataSources.Add(
+					new Microsoft.Reporting.WebForms.ReportDataSource("DataSet5", table.Tables["DataSet5"])
+			);
+
+			ReportViewer1.LocalReport.Refresh();
+		}
+
+	}
 }

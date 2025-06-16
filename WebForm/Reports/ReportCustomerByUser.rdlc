@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>Report Clients by User</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -18,9 +18,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>0.97578cm</Top>
-        <Left>6.53203cm</Left>
+        <Left>4.30481cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>4.15806cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -88,6 +88,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -266,7 +267,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet1</DataSetName>
+        <DataSetName>DataSet5</DataSetName>
         <Top>2.54564cm</Top>
         <Left>3.46287cm</Left>
         <Height>1.2cm</Height>
@@ -304,7 +305,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="DataSet5">
       <Query>
         <DataSourceName>DataSetCustomerByUser</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
