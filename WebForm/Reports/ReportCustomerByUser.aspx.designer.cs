@@ -15,6 +15,14 @@ namespace WebForm.Reports
 
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
+        protected global::System.Web.UI.WebControls.Label lblUserId;
+
+        protected global::System.Web.UI.WebControls.TextBox txtUserId;
+
+        protected global::System.Web.UI.WebControls.Button btnRun;
+
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+
         protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
     }
 }

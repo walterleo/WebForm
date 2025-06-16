@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using Microsoft.Reporting.WebForms;
 using WebForm.BLL_Negocio;
+using System.Linq;
 
 namespace WebForm.Reports
 {
@@ -19,25 +20,49 @@ namespace WebForm.Reports
             }
         }
 
-		private void RunReport(int userId)
-		{
-			BLL_customers bll = new BLL_customers();
-			DataSet table = bll.GetCustomersByUser(userId);
+        protected void btnRun_Click(object sender, EventArgs e)
+        {
+            int userId;
+            if (int.TryParse(txtUserId.Text, out userId))
+            {
+                RunReport(userId);
+            }
+            else
+            {
+                ShowAvailableIds("Please specify a valid userId.");
+            }
+        }
 
-			ReportViewer1.ProcessingMode = ProcessingMode.Local;
-			ReportViewer1.Reset();
+        private void RunReport(int userId)
+        {
+            BLL_customers bll = new BLL_customers();
+            DataSet table = bll.GetCustomersByUser(userId);
 
-			// Ruta del reporte RDLC
-			ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Reports/ReportCustomerByUser.rdlc");
+            if (table.Tables["DataSet5"] == null || table.Tables["DataSet5"].Rows.Count == 0)
+            {
+                ShowAvailableIds("No data found for the specified userId.");
+                return;
+            }
 
-			ReportViewer1.LocalReport.DataSources.Clear();
+            ReportViewer1.ProcessingMode = ProcessingMode.Local;
+            ReportViewer1.Reset();
+            ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Reports/ReportCustomerByUser.rdlc");
+            ReportViewer1.LocalReport.DataSources.Clear();
+            ReportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet5", table.Tables["DataSet5"]));
+            ReportViewer1.LocalReport.Refresh();
 
-			ReportViewer1.LocalReport.DataSources.Add(
-					new Microsoft.Reporting.WebForms.ReportDataSource("DataSet5", table.Tables["DataSet5"])
-			);
+            lblMessage.Visible = false;
+            ReportViewer1.Visible = true;
+        }
 
-			ReportViewer1.LocalReport.Refresh();
-		}
+        private void ShowAvailableIds(string message)
+        {
+            BLL_users bllu = new BLL_users();
+            var ids = bllu.GetListUsers().Select(u => u.ID_USE.ToString());
+            lblMessage.Text = message + " Available IDs: " + string.Join(", ", ids);
+            lblMessage.Visible = true;
+            ReportViewer1.Visible = false;
+        }
 
 	}
 }
