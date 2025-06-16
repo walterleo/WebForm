@@ -181,6 +181,21 @@ namespace WebForm.DAL_Datos
 
 			return us;
 		}
+                public System.Data.DataTable GetCustomersByUser(int userId)
+                {
+                        System.Data.DataTable dt = new System.Data.DataTable();
+                        string query = "SELECT NAM_CUS, LAS_CUS, IDC_CUS FROM CUSTOMERS WHERE ID_USE_FK = @UserId";
+
+                        using (SqlConnection connection = new SqlConnection(connectionQuery))
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                                command.Parameters.AddWithValue("@UserId", userId);
+                                adapter.Fill(dt);
+                        }
+
+                        return dt;
+                }
 
 
 

@@ -201,6 +201,7 @@
     <Content Include="Reports\Report.aspx" />
     <Content Include="Reports\Report2.aspx" />
     <Content Include="Reports\Report3.aspx" />
+    <Content Include="Reports\ReportCustomerByUser.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -233,6 +234,9 @@
     <Content Include="Reports\DataSetUser.xsc">
       <DependentUpon>DataSetUser.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\DataSetCustomerByUser.xsc">
+      <DependentUpon>DataSetCustomerByUser.xsd</DependentUpon>
+    </Content>
     <Content Include="Reports\DataSetAudit.xsc">
       <DependentUpon>DataSetAudit.xsd</DependentUpon>
     </Content>
@@ -249,8 +253,14 @@
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataSetUser.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Reports\DataSetCustomerByUser.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Reports\DataSetUser.xss">
       <DependentUpon>DataSetUser.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DataSetCustomerByUser.xss">
+      <DependentUpon>DataSetCustomerByUser.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
@@ -311,6 +321,7 @@
     <Compile Include="BLL_Negocio\BLL_General.cs" />
     <Compile Include="BLL_Negocio\BLL_login.cs" />
     <Compile Include="BLL_Negocio\BLL_users.cs" />
+    <Compile Include="BLL_Negocio\BLL_customers.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -371,6 +382,13 @@
     <Compile Include="Reports\Report3.aspx.designer.cs">
       <DependentUpon>Report3.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ReportCustomerByUser.aspx.cs">
+      <DependentUpon>ReportCustomerByUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportCustomerByUser.aspx.designer.cs">
+      <DependentUpon>ReportCustomerByUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -411,6 +429,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Reports\Report1.rdlc" />
     <EmbeddedResource Include="Reports\Report4.rdlc" />
+    <EmbeddedResource Include="Reports\ReportCustomerByUser.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
