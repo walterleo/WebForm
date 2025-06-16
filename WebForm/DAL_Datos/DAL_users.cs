@@ -189,13 +189,18 @@ namespace WebForm.DAL_Datos
 			string cadenaConexion = "Server=127.0.0.1;Port=3306;Database=market1234;Uid=root;password=;";
 			string query = "SELECT NAM_CUS, LAS_CUS, IDC_CUS FROM CUSTOMERS WHERE ID_USE_CUS = @UserId";
 
-			using (MySqlConnection connection = new MySqlConnection(cadenaConexion))
-			using (MySqlCommand command = new MySqlCommand(query, connection))
-			using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-			{
-				command.Parameters.AddWithValue("@UserId", userId);
-				adapter.Fill(dt, "DataSet5");
-			}
+                        using (MySqlConnection connection = new MySqlConnection(cadenaConexion))
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                                command.Parameters.AddWithValue("@UserId", userId);
+                                adapter.Fill(dt);
+
+                                if (dt.Tables.Count > 0)
+                                {
+                                        dt.Tables[0].TableName = "DataSet5";
+                                }
+                        }
 
 			return dt;
 		}
