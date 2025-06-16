@@ -16,7 +16,7 @@
             <asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>
             <asp:Button ID="btnRun" runat="server" Text="Run" OnClick="btnRun_Click" />
         </div>
-        <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+        <asp:Label ID="lblMessage1" runat="server" ForeColor="Red" Visible="False"></asp:Label>
 
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Visible="False">
             <LocalReport ReportPath="Reports\ReportCustomerByUser.rdlc"></LocalReport>
