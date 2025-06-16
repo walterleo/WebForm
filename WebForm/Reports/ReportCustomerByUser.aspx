@@ -10,7 +10,15 @@
         <asp:Label ID="lblMessage" runat="server" Text="" Visible="false" CssClass="text-danger"></asp:Label>
 
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server">
+
+        <div>
+            <asp:Label ID="lblUserId" runat="server" Text="User ID:"></asp:Label>
+            <asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>
+            <asp:Button ID="btnRun" runat="server" Text="Run" OnClick="btnRun_Click" />
+        </div>
+        <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Visible="False">
             <LocalReport ReportPath="Reports\ReportCustomerByUser.rdlc"></LocalReport>
         </rsweb:ReportViewer>
     </form>

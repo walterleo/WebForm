@@ -9,45 +9,41 @@
 
 namespace WebForm.Reports
 {
+    public partial class ReportCustomerByUser
+    {
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
+        /// <summary>
+        /// lblUserId control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.Label lblUserId;
 
-	public partial class ReportCustomerByUser
-	{
+        /// <summary>
+        /// txtUserId control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.TextBox txtUserId;
 
-		/// <summary>
-		/// form1 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        /// <summary>
+        /// btnRun control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.Button btnRun;
 
-		/// <summary>
-		/// lblMessage control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label lblMessage;
+        /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
 
-		/// <summary>
-		/// ScriptManager1 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.ScriptManager ScriptManager1;
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
-		/// <summary>
-		/// ReportViewer1 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
-	}
+        /// <summary>
+        /// ReportViewer1 control.
+        /// </summary>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
+    }
 }
