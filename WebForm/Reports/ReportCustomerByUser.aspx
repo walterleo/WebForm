@@ -7,6 +7,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:Label ID="lblMessage" runat="server" Text="" Visible="false" CssClass="text-danger"></asp:Label>
+
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <rsweb:ReportViewer ID="ReportViewer1" runat="server">
             <LocalReport ReportPath="Reports\ReportCustomerByUser.rdlc"></LocalReport>

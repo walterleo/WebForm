@@ -16,7 +16,15 @@ namespace WebForm.Reports
                 {
                     RunReport(userId);
                 }
-            }
+				else
+				{
+					// handle the case without a userId
+					// e.g., show message or load a default (empty) data set
+					lblMessage.Text = "Please specify a valid userId.";
+					lblMessage.Visible = true;
+					ReportViewer1.Visible = false;  // or RunReport(defaultId);
+				}
+			}
         }
 
 		private void RunReport(int userId)
