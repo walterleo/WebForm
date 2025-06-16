@@ -184,9 +184,9 @@ namespace WebForm.DAL_Datos
                 public System.Data.DataTable GetCustomersByUser(int userId)
                 {
                         System.Data.DataTable dt = new System.Data.DataTable();
-                        string query = "SELECT NAM_CUS, LAS_CUS, IDC_CUS FROM CUSTOMERS WHERE ID_USE_FK = @UserId";
+			string query = "SELECT NAM_CUS, LAS_CUS, IDC_CUS FROM CUSTOMERS WHERE ID_USE_CUS = @UserId";
 
-                        using (SqlConnection connection = new SqlConnection(connectionQuery))
+			using (SqlConnection connection = new SqlConnection(connectionQuery))
                         using (SqlCommand command = new SqlCommand(query, connection))
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
